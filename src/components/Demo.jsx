@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { copy, linkIcon, loader, tick } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
@@ -14,7 +14,6 @@ const Demo = () => {
   // RTK lazy query
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
 
-  // Load data from localStorage on mount
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
       localStorage.getItem("articles")
@@ -89,7 +88,6 @@ const Demo = () => {
             <p>↵</p>
           </button>
         </form>
-
         {/* Browse History */}
         <div className='flex flex-col gap-1 max-h-60 overflow-y-auto'>
           {allArticles.reverse().map((item, index) => (
@@ -119,7 +117,7 @@ const Demo = () => {
           <img src={loader} alt='loader' className='w-20 h-20 object-contain' />
         ) : error ? (
           <p className='font-inter font-bold text-black text-center'>
-            Well, that wasn't supposed to happen...
+            That was not supposed to happen...
             <br />
             <span className='font-satoshi font-normal text-gray-700'>
               {error?.data?.error}

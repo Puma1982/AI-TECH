@@ -30,4 +30,4 @@ return headers;
     }),
 })
 
-export const { useLazyGetSummaryQuery } = articleApi
+export const { useLazyGetSummaryQuery } = articleApi;
